@@ -6,6 +6,7 @@ function App() {
   let [글제목, set글제목] = useState(["다", "가", "나"]);
   let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState([false, false, false]);
+  let [inputValue, setInputValue] = useState("");
 
   return (
     <div className="App">
@@ -29,7 +30,7 @@ function App() {
             <span
               onClick={() => {
                 let copy = [...like];
-                copy[param2] = copy[param2] + 1;
+                copy[param2] += 1;
                 setLike(copy);
               }}
             >
@@ -42,9 +43,33 @@ function App() {
             ) : (
               ""
             )}
+            <button
+              onClick={(e) => {
+                let listCopy = [...글제목];
+              }}
+            >
+              DELETE
+            </button>
           </div>
         );
       })}
+      <input
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+        type="text"
+        placeholder="텍스트를 입력하세요"
+      />
+      <button
+        onClick={(e) => {
+          let listCopy = [...글제목];
+          listCopy.push(inputValue);
+          set글제목(listCopy);
+        }}
+        type="submit"
+      >
+        submit
+      </button>
     </div>
   );
 }

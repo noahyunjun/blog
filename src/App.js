@@ -46,6 +46,8 @@ function App() {
             <button
               onClick={(e) => {
                 let listCopy = [...글제목];
+                listCopy.pop(e.target.value);
+                set글제목(listCopy);
               }}
             >
               DELETE
